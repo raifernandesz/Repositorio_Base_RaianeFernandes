@@ -1,0 +1,94 @@
+JSON
+
+import json 
+
+def criar():
+      
+    nome   = input("Nome do jogador: ")
+    numero = input("Numero na camisa ")
+    modelo = input("modelo ")
+    tamanho = input("Tamanho ")
+
+    dados = carregar()
+    dados.append({"nome": nome, "numero": numero, "modelo": modelo, "tamanho": tamanho})
+    salvar(dados)
+    print("Salvo!")
+
+
+def menu():
+    opcao = 0 # vem comprar a camisa do melhor time 
+    while opcao !=5:
+        
+      criar_nome   = input("Qual o nome da estrela?  ")
+    listar_numero = input("E o número da sorte na camisa?  ")
+    modelo_edicao = input("Tá usando qual modelo? (titular, reserva, edição especial...)  ")
+    tamanho_manto = input("Qual o tamanho do manto sagrado? (PP, P, M, G, GG)  ")
+    deletar_produto = input("Perdeu a oportunidade de comprar a melhor camisa ")
+
+
+    
+        opcao = int(input("Escolha: "))
+        if opcao == 1:
+            
+        elif opcao == 2:
+            listar()
+        elif opcao == 3:
+            atualizar()
+        elif opcao == 4:
+            deletar()
+        elif opcao == 5:
+            break
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
