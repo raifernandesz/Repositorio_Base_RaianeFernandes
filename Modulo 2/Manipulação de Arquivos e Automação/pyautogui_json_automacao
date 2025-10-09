@@ -130,8 +130,32 @@ def remover_arquivo(e):
 ft.app(target=main)
 
 
+PYAUTOGUI 
 
+import webbrowser
+import time
+import pyautogui
 
+# Abre o Instagram
+webbrowser.open("https://www.instagram.com/")
+time.sleep(6)  # espera carregar o site
+
+# Maximiza a janela (opcional)
+pyautogui.hotkey("win", "up")
+time.sleep(1)
+
+# Simula pressionar TAB algumas vezes e escrever algo (como "login teste")
+pyautogui.press("tab", presses=3, interval=0.5)
+pyautogui.write("usuario_teste")
+time.sleep(1)
+
+# Rola a página para baixo
+for i in range(3):
+    pyautogui.scroll(-1000)
+    time.sleep(2)
+
+# Fecha o navegador
+pyautogui.hotkey("alt", "f4")
 
 
 
