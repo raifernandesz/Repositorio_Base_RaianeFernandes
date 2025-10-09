@@ -39,9 +39,95 @@ def menu():
         elif opcao == 5:
             break
 
+FLET 
+
+
+import os
+import flet as ft
+pasta = ""
+
+def main(page: ft.Page):
+    page.title = "Interface com OS"
+    page.theme_mode = "dark"
+    
+    # Função para criar pastas
+    def criar_pasta(e):
+        global pasta
+        pasta = texto_recebido.value
+        try:
+            os.mkdir(pasta)
+            informativo.value = f"Pasta criada: '{pasta}'"
+        except FileExistsError:
+            informativo.value = f"A pasta '{pasta}' já existe."
+        page.update()
+
+
+    
+    # Função para criar arquivos
+    def criar_arquivo(e):
+        texto = texto_recebido.value
+
+
+        if pasta == "":
+            open(texto_recebido.value, "w").close()
+            informativo.value = f"Arquivo criado fora da pasta: '{texto}"
+        else:
+            open(f"{pasta}\{texto_recebido.value}", "w").close()
+            informativo.value = f"Arquivo criado dentro da pasta: '{texto}"
+            page.update()
+      
+  
+        #funcao para listar arquivos 
+    def listar_arquivos(e):
+        arquivos = os.listdir()
+        for item in arquivos :
+            informativo.value = f"lista de arquivos {arquivos}"
+        page.update()
+
+
+def renomear_arquivos(e):
+        antigo_nome = texto_recebido.value
+        novo_nome = "wake wake"
+        try:
+            os.rename(antigo_nome,novo_nome)
+            informativo.value = f"Arquivo '{antigo_nome}' renomeado para '{novo_nome}"
+        except FileNotFoundError:
+            informativo.value = f"O arquivo '{antigo_nome}' não foi encontrado"
+        page.update()
 
 
 
+
+def remover_arquivo(e):
+    nome_arquivo = texto_recebido.value
+    try:
+        os.remove(nome_arquivo)
+        informativo.value = f" O arquivo '{nome_arquivo} deletado com sucesso"
+    except FileNotFoundError:
+        informativo.value = f"O arquivo '{nome_arquivo}' não foi encontrado"
+    page.update()
+
+
+        
+   
+
+    # Campos e botões
+    texto_recebido = ft.TextField(label="Escreva o nome do arquivo/pasta...")
+    botao_pasta = ft.ElevatedButton("CRIAR PASTA", bgcolor="pink", color="WHITE", width=200, on_click=criar_pasta)
+    botao_arquivo = ft.ElevatedButton("CRIAR ARQUIVO", bgcolor="orange", color="BLACK", width=200, on_click=criar_arquivo)
+    botao_listar = ft.ElevatedButton("LISTAR ARQUIVOS", bgcolor="blue", color="WHITE", width=200, on_click=listar_arquivos)
+    botao_renomear = ft.ElevatedButton("RENOMEAR ARQUIVO", bgcolor="red", color="BLACK", width=200)
+    botao_remover = ft.ElevatedButton("REMOVER ARQUIVO", bgcolor="purple", color="WHITE", width=200)
+    informativo = ft.Text("", size=20, color="white")
+ 
+    # Layout
+    page.add(
+        ft.Row([texto_recebido], alignment="center"),
+        ft.Row([botao_pasta, botao_arquivo, botao_listar,botao_renomear,botao_remover], alignment="center"),
+        ft.Row([informativo], alignment="center"),
+    )
+
+ft.app(target=main)
 
 
 
